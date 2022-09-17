@@ -1,0 +1,20 @@
+<h2><%= @title %></h2>
+
+<%=link_to "Criar Novo Artigo", new_article_path%>
+
+<ul>
+    <% @articles.each do |article| %>
+        <li>
+            <a href="<%= article_path(article.id) %>">
+                <%= article.title %>
+            </a>
+
+            <%= link_to "Excluir", article_path(article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Tem Certeza?"
+                  } %>
+
+            <%= link_to "Editar", edit_article_path(article)%>
+        </li>
+    <% end %>
+</ul>
